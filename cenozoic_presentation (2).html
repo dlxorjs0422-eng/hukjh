@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신생대의 환경과 생물 - 최종 발표</title>
+    <!-- Tailwind CSS 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #090d16;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+        .jua-font {
+            font-family: 'Jua', sans-serif;
+        }
+        /* 스크롤바 숨기기 (모바일 네비게이션용) */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* 웅장한 애니메이션 효과 */
+        @keyframes floatDeep {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(3deg); }
+        }
+        .animate-float-deep {
+            animation: floatDeep 5s ease-in-out infinite;
+        }
+        @keyframes swimOcean {
+            0% { transform: translateX(-40px) scaleX(1); }
+            48% { transform: translateX(320px) scaleX(1); }
+            50% { transform: translateX(320px) scaleX(-1); }
+            98% { transform: translateX(-40px) scaleX(-1); }
+            100% { transform: translateX(-40px) scaleX(1); }
+        }
+        .animate-swim-ocean {
+            animation: swimOcean 10s linear infinite;
+        }
+        @keyframes volcanoActive {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.8)); }
+        }
+        .animate-volcano {
+            animation: volcanoActive 2.5s ease-in-out infinite;
+        }
+        @keyframes iceAgeCycle {
+            0%, 100% { opacity: 0.2; transform: scaleX(0.8); }
+            50% { opacity: 0.95; transform: scaleX(1.1); }
+        }
+        .animate-ice-cycle {
+            animation: iceAgeCycle 4s ease-in-out infinite;
+        }
+        @keyframes scanGlow {
+            0% { transform: translateY(-30px); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(80px); opacity: 0; }
+        }
+        .animate-scan {
+            animation: scanGlow 3s ease-in-out infinite;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-[#070b14] text-slate-100 selection:bg-cyan-500 selection:text-white antialiased">
+
+    <!-- 웅장한 다크 네온 헤더 배너 (모바일 반응형 타이포그래피) -->
+    <header class="bg-gradient-to-b from-[#0f172a] via-[#090d16] to-[#070b14] py-10 sm:py-16 px-4 relative overflow-hidden border-b border-cyan-500/30">
+        <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="inline-block bg-gradient-to-r from-amber-500 to-rose-500 text-slate-950 font-black text-[11px] sm:text-xs md:text-sm px-3.5 py-1.5 sm:px-5 sm:py-2 rounded-full shadow-lg mb-3 sm:mb-4 tracking-widest uppercase">
+                고등학교 통합과학 공식 발표 자료
+            </span>
+            <h1 class="jua-font text-3xl sm:text-5xl md:text-7xl tracking-wide sm:tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 drop-shadow-[0_4px_12px_rgba(56,189,248,0.4)] mb-4 sm:mb-6">
+                신생대의 환경과 생물
+            </h1>
+            <p class="text-sm sm:text-lg md:text-xl text-cyan-200/80 font-light max-w-3xl mx-auto leading-relaxed px-2">
+                따뜻하고 평화로웠던 초기 대지부터, 거대한 빙하기와 웅장한 산맥이 탄생한 말기까지! 지구 생태계의 대서사시를 완벽하게 해부합니다.
+            </p>
+        </div>
+    </header>
+
+    <!-- 모바일 최적화 가로 스크롤 네비게이션 목차 바 -->
+    <nav class="sticky top-0 z-50 bg-[#090d16]/95 backdrop-blur-xl border-b border-slate-800 py-2.5 px-3 sm:px-4 shadow-2xl">
+        <div class="max-w-6xl mx-auto flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth whitespace-nowrap text-xs md:text-sm font-bold py-1 px-1">
+            <a href="#sec-1" class="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-cyan-950/80 text-cyan-300 border border-cyan-800/80 hover:bg-cyan-900 active:scale-95 transition min-h-[40px]">1. 시대구분</a>
+            <a href="#sec-2" class="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-indigo-950/80 text-indigo-300 border border-indigo-800/80 hover:bg-indigo-900 active:scale-95 transition min-h-[40px]">2. 기후변화</a>
+            <a href="#sec-3" class="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-blue-950/80 text-blue-300 border border-blue-800/80 hover:bg-blue-900 active:scale-95 transition min-h-[40px]">3. 대기·해양</a>
+            <a href="#sec-4" class="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-amber-950/80 text-amber-300 border border-amber-800/80 hover:bg-amber-900 active:scale-95 transition min-h-[40px]">4. 수륙분포</a>
+            <a href="#sec-5" class="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-emerald-950/80 text-emerald-300 border border-emerald-800/80 hover:bg-emerald-900 active:scale-95 transition min-h-[40px]">5. 대표동물</a>
+            <a href="#sec-6" class="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-teal-950/80 text-teal-300 border border-teal-800/80 hover:bg-teal-900 active:scale-95 transition min-h-[40px]">6. 대표식물</a>
+            <a href="#sec-7" class="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-rose-950/80 text-rose-300 border border-rose-800/80 hover:bg-rose-900 active:scale-95 transition min-h-[40px]">7. 표준화석</a>
+            <a href="#sec-8" class="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-purple-950/80 text-purple-300 border border-purple-800/80 hover:bg-purple-900 active:scale-95 transition min-h-[40px]">8. 말기사건</a>
+            <a href="#sec-9" class="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-orange-950/80 text-orange-300 border border-orange-800/80 hover:bg-orange-900 active:scale-95 transition min-h-[40px]">9. 시상화석</a>
+            <a href="#sec-10" class="inline-flex items-center justify-center px-3.5 py-2 rounded-xl bg-slate-800 text-slate-200 border border-slate-700 hover:bg-slate-700 active:scale-95 transition min-h-[40px]">10. 환경과생물</a>
+        </div>
+    </nav>
+
+    <!-- 메인 콘텐츠 컨테이너 (모바일 여백 조정) -->
+    <main class="max-w-5xl mx-auto px-3.5 sm:px-6 py-8 sm:py-12 space-y-10 sm:space-y-16">
+
+        <!-- 1. 시대 구분 -->
+        <section id="sec-1" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 transition hover:border-cyan-500/50">
+            <div class="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 text-slate-950 flex items-center justify-center font-black text-base sm:text-lg shadow-lg shrink-0">1</span>
+                <h2 class="jua-font text-xl sm:text-2xl md:text-3xl text-cyan-300">시대 구분</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="space-y-3 sm:space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <p>• <strong>시작·종료 시기:</strong> 0.6억 년 전(약 6,600만 년 전)에 시작해서 지금까지 신생대이다.</p>
+                    <p>• <strong>전체 지질 시대 비율:</strong> 전체 지질 시대에서 신생대는 단 <strong>1.4%</strong>만을 차지한다.</p>
+                    <p>• <strong>기준 사건:</strong> 소행성 충돌과 거대한 화산 활동으로 인해 대멸종이 일어난 이후 새로운 생태계가 열리며 시작되었다.</p>
+                </div>
+                <div class="bg-[#04060b] p-4 sm:p-6 rounded-2xl border border-cyan-500/30 flex flex-col items-center justify-center">
+                    <p class="text-cyan-400 font-bold mb-3 sm:mb-4 text-xs tracking-wider text-center">지질 시대 비율 비교 시각화</p>
+                    <svg viewBox="0 0 260 100" class="w-full h-auto max-w-xs">
+                        <rect x="10" y="30" width="240" height="30" rx="6" fill="#1e293b" stroke="#334155" stroke-width="2"></rect>
+                        <rect x="235" y="30" width="15" height="30" rx="4" fill="#38bdf8" class="animate-pulse"></rect>
+                        <text x="242" y="78" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle">1.4% (신생대)</text>
+                        <text x="120" y="78" fill="#94a3b8" font-size="10" text-anchor="middle">나머지 지질 시대 (98.6%)</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 기후 (초기 온난 ➔ 말기 빙하기/간빙기 반복) -->
+        <section id="sec-2" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 transition hover:border-indigo-500/50">
+            <div class="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-slate-950 flex items-center justify-center font-black text-base sm:text-lg shadow-lg shrink-0">2</span>
+                <h2 class="jua-font text-xl sm:text-2xl md:text-3xl text-indigo-300">기후 변화</h2>
+            </div>
+            <div class="space-y-4 sm:space-y-6 text-slate-300 leading-relaxed text-sm sm:text-base">
+                <p>• <strong>전반적인 기후:</strong> 신생대 초중기에는 전 지구적으로 대체로 온난하였으나, 말기로 갈수록 점차 냉각되었다.</p>
+                <p>• <strong>빙하기와 간빙기:</strong> 신생대 말기에는 <strong>빙하기 4번과 간빙기 3번</strong>을 겪으며 기후가 극적으로 요동쳤다.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 sm:gap-6 pt-2">
+                    <div class="bg-gradient-to-br from-amber-950/40 to-orange-950/40 p-4 sm:p-5 rounded-2xl border border-amber-500/30">
+                        <h3 class="jua-font text-base sm:text-lg text-amber-300 mb-1.5 sm:mb-2">초기~중기 (온난한 기후)</h3>
+                        <p class="text-xs sm:text-sm text-slate-300">전 지구적으로 매우 온화하며 아열대성 식생이 극지방까지 번성했던 시기.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-cyan-950/45 to-blue-950/45 p-4 sm:p-5 rounded-2xl border border-cyan-500/30 relative overflow-hidden">
+                        <h3 class="jua-font text-base sm:text-lg text-cyan-300 mb-1.5 sm:mb-2">말기 (빙하기 4회 · 간빙기 3회 반복)</h3>
+                        <p class="text-xs sm:text-sm text-slate-300">혹독한 빙하기와 비교적 따뜻한 간빙기가 주기적으로 반복되며 대형 포유류에게 시련을 안김.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 대기·해양 환경 -->
+        <section id="sec-3" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 transition hover:border-blue-500/50">
+            <div class="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-500 to-sky-600 text-slate-950 flex items-center justify-center font-black text-base sm:text-lg shadow-lg shrink-0">3</span>
+                <h2 class="jua-font text-xl sm:text-2xl md:text-3xl text-blue-300">대기·해양 환경</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="space-y-3 sm:space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <p>• <strong>대기 중 산소 농도:</strong> 큰 변동 없이 20~21%를 안정적으로 유지했다.</p>
+                    <p>• <strong>이산화탄소 농도와 영향:</strong> 1,600ppm에 달했으며, 현재보다 지구 평균 기온을 12도 올리는 강력한 온실효과를 일으켰음.</p>
+                    <p>• <strong>바다의 상태:</strong> 초기에는 온실처럼 매우 따뜻하고 해수면이 높았으나, 시간이 흐를수록 점차 수온이 낮아지고 해수면도 하강하며 빙하기를 맞이하는 ‘점진적 냉각기’의 특징을 보였음.</p>
+                </div>
+                <div class="bg-[#04060b] p-4 sm:p-6 rounded-2xl border border-blue-500/30 flex flex-col items-center justify-center">
+                    <p class="text-blue-300 font-bold mb-3 sm:mb-4 text-xs text-center">온실효과 및 해수면 냉각 시뮬레이션</p>
+                    <svg viewBox="0 0 280 130" class="w-full h-auto max-w-xs">
+                        <path d="M20,100 Q140,50 260,100 V120 H20 Z" fill="#0284c7" opacity="0.6"></path>
+                        <circle cx="140" cy="40" r="18" fill="#f59e0b" class="animate-pulse"></circle>
+                        <text x="140" y="85" fill="#e0f2fe" font-size="11" font-weight="bold" text-anchor="middle">초기 고온실효과 (해수면 상승)</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 수륙 분포 -->
+        <section id="sec-4" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 transition hover:border-amber-500/50">
+            <div class="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 text-slate-950 flex items-center justify-center font-black text-base sm:text-lg shadow-lg shrink-0">4</span>
+                <h2 class="jua-font text-xl sm:text-2xl md:text-3xl text-amber-300">수륙 분포와 지형</h2>
+            </div>
+            <div class="space-y-4 sm:space-y-6 text-slate-300 leading-relaxed text-sm sm:text-base">
+                <p>• <strong>대륙의 배치:</strong> 말기에선 현재와 거의 같은 배치와 지형을 이루게 되었음 (출처: 사이언스올).</p>
+                <p>• <strong>지각 변동과 결과:</strong> 경동성 요곡 운동과 활발한 화산 활동으로 이루어져 현재의 동고서저 지형과 주요 산맥, 화산 지형을 만들었음.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 sm:gap-6 pt-2">
+                    <div class="bg-[#050811] p-4 sm:p-5 rounded-2xl border border-amber-500/30 flex flex-col items-center justify-center">
+                        <span class="text-amber-400 font-bold text-xs mb-2.5 text-center">히말라야 및 알프스 조산대 형성</span>
+                        <svg viewBox="0 0 240 100" class="w-full h-auto">
+                            <rect x="10" y="70" width="80" height="20" rx="3" fill="#475569"></rect>
+                            <rect x="150" y="70" width="80" height="20" rx="3" fill="#334155"></rect>
+                            <polygon points="120,30 90,70 150,70" fill="#f59e0b"></polygon>
+                            <text x="120" y="55" fill="#0f172a" font-size="9" font-weight="bold" text-anchor="middle">대륙충돌</text>
+                        </svg>
+                        <p class="text-[11px] sm:text-xs text-slate-400 mt-2 text-center">인도판과 유라시아판의 거대한 충돌</p>
+                    </div>
+
+                    <div class="bg-[#050811] p-4 sm:p-5 rounded-2xl border border-rose-500/30 flex flex-col items-center justify-center">
+                        <span class="text-rose-400 font-bold text-xs mb-2.5 text-center">활발한 화산 활동 (동고서저 지형)</span>
+                        <svg viewBox="0 0 240 100" class="w-full h-auto">
+                            <path d="M20,90 L100,50 L180,90 Z" fill="#1e293b" stroke="#475569" stroke-width="2"></path>
+                            <polygon points="90,50 100,20 110,50" fill="#ef4444" class="animate-volcano"></polygon>
+                            <circle cx="100" cy="15" r="5" fill="#fde047" class="animate-bounce"></circle>
+                        </svg>
+                        <p class="text-[11px] sm:text-xs text-slate-400 mt-2 text-center">경동성 요곡 운동 및 화산 분출</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 대표 동물 -->
+        <section id="sec-5" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 transition hover:border-emerald-500/50">
+            <div class="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-slate-950 flex items-center justify-center font-black text-base sm:text-lg shadow-lg shrink-0">5</span>
+                <h2 class="jua-font text-xl sm:text-2xl md:text-3xl text-emerald-300">대표 동물 (바다와 육지의 명확한 분리 배치)</h2>
+            </div>
+            <div class="space-y-4 sm:space-y-6 text-slate-300 leading-relaxed text-sm sm:text-base">
+                <p>• <strong>대표 동물 2종 이상과 특징:</strong> 매머드는 신생대 말기 빙하기에 적응하기 좋은 두꺼운 털을 가졌으며, 메갈로돈은 초기 대형 고래류와 어류 등 풍부한 자원을 바탕으로 번성했다.</p>
+                <p>• <strong>해양생물·육상생물 구분:</strong> 육상생물은 매머드와 인류, 해양생물은 메갈로돈과 화폐석이다.</p>
+                <p>• <strong>번성 이유:</strong> 매머드는 두꺼운 털로 빙하기에 적응하기에 적합했고, 메갈로돈은 신생대 초기 풍부한 해양 포유류 자원 덕분에 최상위 포식자로 군림할 수 있었다.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 sm:gap-6 pt-2">
+                    <!-- 바다 환경 (화폐석 & 메갈로돈) -->
+                    <div class="bg-gradient-to-b from-sky-950 to-blue-950 p-4 sm:p-6 rounded-2xl border border-sky-500/40 relative overflow-hidden min-h-[220px] flex flex-col justify-between">
+                        <span class="inline-block self-start bg-sky-500/30 text-sky-300 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold z-10">🌊 얕고 따뜻한 바다 속 (화폐석 & 메갈로돈)</span>
+                        <svg viewBox="0 0 300 120" class="w-full h-auto my-2">
+                            <g class="animate-float-deep" transform="translate(30, 20)">
+                                <circle cx="20" cy="20" r="16" fill="#fde047" stroke="#b45309" stroke-width="2"></circle>
+                                <circle cx="20" cy="20" r="10" fill="none" stroke="#b45309" stroke-width="1.5"></circle>
+                                <text x="20" y="48" fill="#fef08a" font-size="10" font-weight="bold" text-anchor="middle">화폐석</text>
+                            </g>
+                            <g class="animate-swim-ocean" transform="translate(0, 60)">
+                                <path d="M0,15 L35,5 L45,12 L60,10 L50,20 L20,25 Z" fill="#94a3b8"></path>
+                                <text x="30" y="38" fill="#bae6fd" font-size="10" font-weight="bold" text-anchor="middle">메갈로돈</text>
+                            </g>
+                        </svg>
+                        <p class="text-[11px] sm:text-xs text-sky-200 text-center relative z-10">따뜻한 바다 속에서 서식하는 화폐석과 메갈로돈</p>
+                    </div>
+
+                    <!-- 육지 환경 (매머드 & 인류) -->
+                    <div class="bg-gradient-to-b from-amber-950/60 to-stone-950 p-4 sm:p-6 rounded-2xl border border-amber-500/40 relative overflow-hidden min-h-[220px] flex flex-col justify-between">
+                        <span class="inline-block self-start bg-amber-500/30 text-amber-300 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold z-10">⛰️ 육지 및 산맥 (매머드 & 인류)</span>
+                        <svg viewBox="0 0 300 120" class="w-full h-auto my-2">
+                            <g transform="translate(40, 15)">
+                                <path d="M20,40 Q30,20 50,25 Q70,30 80,45 L85,70 L70,70 L65,55 L45,55 L40,70 L25,70 Z" fill="#d97706"></path>
+                                <path d="M20,42 Q5,40 10,30" fill="none" stroke="#fff" stroke-width="3"></path>
+                                <text x="50" y="85" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">털 매머드</text>
+                            </g>
+                            <g transform="translate(200, 25)">
+                                <circle cx="20" cy="20" r="7" fill="#fde047"></circle>
+                                <path d="M20,27 L20,50 L14,70 M20,50 L26,70 M13,38 L27,38" stroke="#fde047" stroke-width="3" stroke-linecap="round"></path>
+                                <text x="20" y="85" fill="#fde047" font-size="10" font-weight="bold" text-anchor="middle">인류의 조상</text>
+                            </g>
+                        </svg>
+                        <p class="text-[11px] sm:text-xs text-amber-200 text-center relative z-10">빙하기에 적응한 털 매머드와 인류 조상</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 대표 식물 -->
+        <section id="sec-6" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 transition hover:border-teal-500/50">
+            <div class="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 text-slate-950 flex items-center justify-center font-black text-base sm:text-lg shadow-lg shrink-0">6</span>
+                <h2 class="jua-font text-xl sm:text-2xl md:text-3xl text-teal-300">대표 식물</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="space-y-3 sm:space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <p>• <strong>대표 식물과 특징:</strong> <strong>속씨식물</strong>은 꽃을 이용해 번식하고, 살아가는 환경이 매우 다양하다.</p>
+                    <p>• <strong>시대 비교 (중생대 ➔ 신생대):</strong> 중생대에는 겉씨식물(소나무, 은행나무 등)이 우세했으나, 신생대에 들어와 꽃을 피우는 속씨식물이 폭발적으로 번성하며 지구 식생의 주역이 되었다.</p>
+                </div>
+                <div class="bg-[#04060b] p-4 sm:p-6 rounded-2xl border border-teal-500/30 flex flex-col items-center justify-center">
+                    <p class="text-teal-300 font-bold mb-3 sm:mb-4 text-xs text-center">속씨식물(활엽수 및 꽃) 번성 시각화</p>
+                    <svg viewBox="0 0 240 120" class="w-full h-auto max-w-xs">
+                        <rect x="110" y="70" width="20" height="40" fill="#78350f"></rect>
+                        <circle cx="120" cy="50" r="35" fill="#059669" class="animate-pulse"></circle>
+                        <circle cx="95" cy="40" r="6" fill="#f43f5e"></circle>
+                        <circle cx="145" cy="35" r="6" fill="#fde047"></circle>
+                        <text x="120" y="118" fill="#a7f3d0" font-size="10" font-weight="bold" text-anchor="middle">꽃과 열매를 맺는 속씨식물</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 표준 화석 -->
+        <section id="sec-7" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 transition hover:border-rose-500/50">
+            <div class="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 text-slate-950 flex items-center justify-center font-black text-base sm:text-lg shadow-lg shrink-0">7</span>
+                <h2 class="jua-font text-xl sm:text-2xl md:text-3xl text-rose-300">표준화석</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="space-y-3 sm:space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <p>• <strong>이 시대의 표준화석:</strong> 화폐석 및 매머드는 신생대 지층에서만 한정적으로 발견되는 대표적인 표준화석이다.</p>
+                    <p>• <strong>조건 4가지와 연결:</strong> 신생대 당시 해양 환경에는 화폐석이, 육상 환경에는 매머드가 광범위하게 분포하여 수많은 개체 수를 유지했으므로 지층에 화석으로 남을 확률이 매우 높았다.</p>
+                    <p>• <strong>알 수 있는 것:</strong> 화폐석을 통해 당시에 얕고 따뜻한 바다가 존재했음을 추정할 수 있고, 매머드를 통해 신생대 후기 후빙기·빙하기의 추운 대륙성 환경을 추론할 수 있다.</p>
+                </div>
+                <div class="bg-[#04060b] p-4 sm:p-5 rounded-2xl border border-rose-500/30 flex flex-col items-center justify-center relative overflow-hidden">
+                    <span class="text-rose-400 font-bold text-xs mb-3 text-center">표준화석의 특성 및 신생대 지층 감지</span>
+                    <svg viewBox="0 0 280 160" class="w-full h-auto">
+                        <rect x="10" y="10" width="125" height="35" rx="6" fill="#1e1b2e" stroke="#f43f5e" stroke-width="1.5"></rect>
+                        <text x="72" y="26" fill="#fecdd3" font-size="9" font-weight="bold" text-anchor="middle">분포 면적: 넓음 (Wide)</text>
+                        <text x="72" y="38" fill="#fda4af" font-size="8" text-anchor="middle">🌍 전 지구적 번성</text>
+
+                        <rect x="145" y="10" width="125" height="35" rx="6" fill="#1e1b2e" stroke="#f43f5e" stroke-width="1.5"></rect>
+                        <text x="207" y="26" fill="#fecdd3" font-size="9" font-weight="bold" text-anchor="middle">생존 기간: 짧음 (Short)</text>
+                        <text x="207" y="38" fill="#fda4af" font-size="8" text-anchor="middle">⏱️ 특정 시대 한정</text>
+
+                        <rect x="10" y="60" width="260" height="25" fill="#334155" rx="2"></rect>
+                        <text x="25" y="76" fill="#94a3b8" font-size="8">현세 지층</text>
+                        
+                        <rect x="10" y="87" width="260" height="40" fill="#881337" opacity="0.8" rx="2"></rect>
+                        <text x="25" y="102" fill="#fecdd3" font-size="9" font-weight="bold">신생대 지층 [특이 화석존]</text>
+
+                        <circle cx="130" cy="107" r="8" fill="#fde047" stroke="#b45309" stroke-width="1.5" class="animate-pulse"></circle>
+                        <text x="130" y="110" fill="#78350f" font-size="7" font-weight="bold" text-anchor="middle">화폐</text>
+                        
+                        <polygon points="210,100 220,115 200,115" fill="#d97706" class="animate-pulse"></polygon>
+                        <text x="210" y="112" fill="#fff" font-size="7" font-weight="bold" text-anchor="middle">매머드</text>
+
+                        <rect x="10" y="129" width="260" height="25" fill="#1e293b" rx="2"></rect>
+                        <text x="25" y="145" fill="#64748b" font-size="8">중생대 지층 (공룡 화석)</text>
+
+                        <line x1="10" y1="107" x2="270" y2="107" stroke="#f43f5e" stroke-width="2" stroke-dasharray="4 2" class="animate-scan"></line>
+                    </svg>
+                    <p class="text-[11px] text-rose-300/80 mt-2 text-center">신생대 지층에서만 고유하게 발굴되는 매머드 & 화폐석</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 시대 말 사건 -->
+        <section id="sec-8" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 transition hover:border-purple-500/50">
+            <div class="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 text-slate-950 flex items-center justify-center font-black text-base sm:text-lg shadow-lg shrink-0">8</span>
+                <h2 class="jua-font text-xl sm:text-2xl md:text-3xl text-purple-300">시대 말 사건</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
+                <div class="space-y-3 sm:space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                    <p>• <strong>이 시대 말에 일어난 사건:</strong> 약 1만~5만 년 전에 매머드, 검치호, 거대 슬로스 등 신생대를 대표하던 대형 포유류의 상당수가 갑작스럽게 절멸하는 사건이 일어났다.</p>
+                    <p>• <strong>원인으로 제시되는 요인:</strong> 신생대 말기 반복적으로 찾아온 빙하기와 간빙기의 급격한 기후 변동으로 인해 서식지가 감소하고 생활 환경과 해수면이 크게 변했다.</p>
+                </div>
+                <div class="bg-[#04060b] p-4 sm:p-5 rounded-2xl border border-purple-500/30 flex flex-col items-center justify-center">
+                    <span class="text-purple-300 font-bold text-xs mb-3 text-center">빙하기-간빙기 주기적 기후 요동 & 멸종 원인</span>
+                    <svg viewBox="0 0 280 150" class="w-full h-auto">
+                        <path d="M 10 75 Q 45 20, 80 75 T 150 75 T 220 75 T 270 75" fill="none" stroke="#a855f7" stroke-width="2.5" stroke-dasharray="3 3"></path>
+                        
+                        <circle cx="45" cy="30" r="14" fill="#0284c7" class="animate-pulse"></circle>
+                        <text x="45" y="34" fill="#fff" font-size="8" font-weight="bold" text-anchor="middle">빙하기</text>
+
+                        <circle cx="115" cy="120" r="14" fill="#eab308" class="animate-pulse"></circle>
+                        <text x="115" y="124" fill="#000" font-size="8" font-weight="bold" text-anchor="middle">간빙기</text>
+
+                        <circle cx="185" cy="30" r="14" fill="#0284c7" class="animate-pulse"></circle>
+                        <text x="185" y="34" fill="#fff" font-size="8" font-weight="bold" text-anchor="middle">빙하기</text>
+
+                        <rect x="20" y="55" width="240" height="40" fill="#38bdf8" rx="8" class="animate-ice-cycle" opacity="0.4"></rect>
+                        
+                        <text x="140" y="72" fill="#f3e8ff" font-size="10" font-weight="bold" text-anchor="middle">급격한 환경 변화 & 서식지 파괴</text>
+                        <text x="140" y="87" fill="#c084fc" font-size="9" text-anchor="middle">➔ 대형 포유류(매머드·검치호) 절멸</text>
+                    </svg>
+                    <p class="text-[11px] text-purple-300/80 mt-2 text-center">4회 빙하기 · 3회 간빙기의 격변 속 대형 포유류 퇴출</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. 시상화석과 환경 추론 -->
+        <section id="sec-9" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 transition hover:border-orange-500/50">
+            <div class="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-orange-500 to-amber-600 text-slate-950 flex items-center justify-center font-black text-base sm:text-lg shadow-lg shrink-0">9</span>
+                <h2 class="jua-font text-xl sm:text-2xl md:text-3xl text-orange-300">시상화석과 환경 추론</h2>
+            </div>
+            <div class="space-y-4 sm:space-y-6 text-slate-300 leading-relaxed text-sm sm:text-base">
+                <p>• <strong>관련 시상화석:</strong> 고사리, 산호, 화폐석 등</p>
+                <p>• <strong>알려주는 서식 환경:</strong> 고사리는 온난 습윤한 육지에서 서식하였음을 알 수 있다.</p>
+                <p>• <strong>표준화석과 시상화석 조건 비교:</strong> 표준화석은 생존 기간이 짧고 분포 면적이 넓어야 하는데, 생물이 살았던 시기를 이용해 지층의 상대적인 생성 시기를 판단해 시대를 알 수 있기 때문이다.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 sm:gap-6 pt-2">
+                    <div class="bg-gradient-to-br from-emerald-950/60 to-teal-950/60 p-4 sm:p-5 rounded-2xl border border-emerald-500/40 flex flex-col items-center">
+                        <span class="text-emerald-300 font-bold text-xs mb-2.5 text-center">🌿 온난 습윤한 육지 환경 지표</span>
+                        <svg viewBox="0 0 200 90" class="w-full h-auto max-w-[200px]">
+                            <path d="M100,80 Q95,50 100,10 Q110,35 130,30 M100,35 Q80,40 70,30 M100,55 Q125,60 140,50 M100,60 Q75,65 60,55" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"></path>
+                            <circle cx="100" cy="10" r="4" fill="#34d399" class="animate-ping"></circle>
+                        </svg>
+                        <h4 class="jua-font text-emerald-300 text-sm sm:text-base mt-1">고사리 화석</h4>
+                        <p class="text-[11px] sm:text-xs text-slate-300 text-center mt-1">온난하고 습도가 높은 육상 습지대 증거</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-cyan-950/60 to-blue-950/60 p-4 sm:p-5 rounded-2xl border border-cyan-500/40 flex flex-col items-center">
+                        <span class="text-cyan-300 font-bold text-xs mb-2.5 text-center">🪸 얕고 따뜻한 바다 환경 지표</span>
+                        <svg viewBox="0 0 200 90" class="w-full h-auto max-w-[200px]">
+                            <path d="M60,80 Q50,40 70,30 Q80,50 90,20 Q100,50 110,35 Q120,60 140,80 Z" fill="#06b6d4" opacity="0.8"></path>
+                            <circle cx="145" cy="40" r="12" fill="#fde047" stroke="#b45309" stroke-width="2" class="animate-pulse"></circle>
+                            <circle cx="145" cy="40" r="7" fill="none" stroke="#b45309" stroke-width="1.5"></circle>
+                        </svg>
+                        <h4 class="jua-font text-cyan-300 text-sm sm:text-base mt-1">산호 · 화폐석 화석</h4>
+                        <p class="text-[11px] sm:text-xs text-slate-300 text-center mt-1">수온이 따뜻하고 얕은 해양 환경 증거</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. 환경 변화와 생물 변화의 관계 -->
+        <section id="sec-10" class="glass-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 transition hover:border-slate-500/50">
+            <div class="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
+                <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-600 to-slate-800 text-slate-100 flex items-center justify-center font-black text-base sm:text-lg shadow-lg shrink-0">10</span>
+                <h2 class="jua-font text-xl sm:text-2xl md:text-3xl text-slate-200">환경 변화와 생물 변화의 관계</h2>
+            </div>
+            <div class="space-y-4 sm:space-y-6 text-slate-300 leading-relaxed text-sm sm:text-base">
+                <div class="bg-[#04060b] p-4 sm:p-6 rounded-2xl border border-slate-700 space-y-3 sm:space-y-4">
+                    <p>• <strong>환경 변화가 준 영향:</strong> 중기까지는 대체로 온난한 기후가 지속되었으나, 이후 기온이 점차 낮아져 신생대 말에는 빙하기와 간빙기가 여러 차례 반복되었다. 대륙 이동이 계속되어 대서양 넓어지고 히말라야 산맥이 형성되는 등 수륙 분포가 현재와 비슷해졌다. 바다에서는 화폐석이 번성했고, 육지에서는 포유류와 속씨식물이 번성했다.</p>
+                    <p>• <strong>구체적인 사례 1가지:</strong> 해양 환경이 얕고 따뜻하고 맑아지자 화폐석이 번성하였다.</p>
+                </div>
+
+                <!-- 모바일 반응형 수직/수평 플로우차트 -->
+                <div class="bg-[#04060b] p-4 sm:p-6 rounded-2xl border border-cyan-500/30 flex flex-col items-center">
+                    <h3 class="jua-font text-cyan-300 text-base sm:text-lg mb-4 text-center">환경 변동과 생물 적응의 인과관계 메커니즘</h3>
+                    <div class="w-full max-w-2xl grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 text-center">
+                        <div class="bg-slate-900/90 p-3.5 sm:p-4 rounded-xl border border-cyan-500/30 flex flex-col justify-between items-center">
+                            <span class="text-xs font-bold text-cyan-400 mb-1">STEP 1. 환경 변동</span>
+                            <p class="text-xs text-slate-300">대륙 분리, 히말라야 형성 및 빙하기/간빙기 반복</p>
+                            <div class="mt-2 text-cyan-400 font-black text-lg md:text-xl animate-bounce">↓</div>
+                        </div>
+                        <div class="bg-slate-900/90 p-3.5 sm:p-4 rounded-xl border border-amber-500/30 flex flex-col justify-between items-center">
+                            <span class="text-xs font-bold text-amber-400 mb-1">STEP 2. 서식지 재편</span>
+                            <p class="text-xs text-slate-300">얕고 따뜻한 바다 형성 & 초원 지대 확대</p>
+                            <div class="mt-2 text-amber-400 font-black text-lg md:text-xl animate-bounce">↓</div>
+                        </div>
+                        <div class="bg-slate-900/90 p-3.5 sm:p-4 rounded-xl border border-emerald-500/30 flex flex-col justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-400 mb-1">STEP 3. 생물 적응·번성</span>
+                            <p class="text-xs text-slate-300">화폐석, 속씨식물, 대형 포유류 및 인류의 대번성</p>
+                            <div class="mt-2 text-emerald-400 font-black text-[11px] sm:text-xs">✨ 신생대 생태계 완성</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 참고 자료 및 만든 사람 푸터 (모바일 하단 가독성 개선) -->
+    <footer class="bg-[#04060b] text-slate-400 mt-12 sm:mt-20 py-8 sm:py-12 px-4 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8 text-center">
+            
+            <div class="space-y-2">
+                <h4 class="jua-font text-amber-400 text-base sm:text-lg">참고 자료 및 출처</h4>
+                <ul class="text-xs space-y-1.5 text-slate-400 leading-relaxed">
+                    <li>제미나이, 박문호TV</li>
+                    <li><a href="https://www.nature.com/articles/s41467-024-44784-4" target="_blank" class="hover:underline text-cyan-400 inline-block py-0.5">Nature 연구 논문</a></li>
+                    <li><a href="https://blog.naver.com/heanji7056/222787834271" target="_blank" class="hover:underline text-cyan-400 inline-block py-0.5">네이버 블로그 자료</a></li>
+                    <li>국립중앙과학관 지질시대 화석 백과, 통합과학2 교과서, 미래엔 통합과학2</li>
+                    <li>
+                        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0012825204000224" target="_blank" class="hover:underline text-cyan-400 inline-block py-0.5">ScienceDirect</a>, 
+                        <a href="https://pubs.usgs.gov/fs/fs2-00/" target="_blank" class="hover:underline text-cyan-400 inline-block py-0.5">USGS 자료</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pt-5 border-t border-slate-800">
+                <h4 class="jua-font text-cyan-400 text-base sm:text-lg mb-2">만든 사람</h4>
+                <div class="text-white font-bold text-sm sm:text-base bg-slate-900/80 py-2.5 px-4 sm:px-6 rounded-xl inline-block border border-slate-700 shadow-md">
+                    <span class="text-amber-400 mr-1.5 sm:mr-2 block sm:inline mb-1 sm:mb-0">[ 1반 4모둠 ]</span>
+                    이준우 · 이태건 · 조연우 · 최시영 · 문준혁
+                </div>
+            </div>
+
+            <p class="text-[11px] text-slate-600 pt-2 sm:pt-4">
+                © Cenozoic Science Presentation Webpage. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
